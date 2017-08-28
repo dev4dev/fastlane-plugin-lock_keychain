@@ -4,7 +4,8 @@ module Fastlane
       def self.run(params)
         keychain_path = FastlaneCore::Helper.keychain_path(params[:path])
         escaped_path = keychain_path.shellescape
-        Fastlane::Actions.sh("security lock-keychain #{escaped_path}", log: false)
+        commands = [Fastlane::Actions.sh("security lock-keychain #{escaped_path}", log: false)]
+        commands
       end
 
       def self.description
